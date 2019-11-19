@@ -2616,7 +2616,7 @@ module.exports = /******/ (function(modules) {
       // Indicate to webpack that this file can be concatenated
       /* harmony default export */ var setPublicPath = null;
 
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=b8a4f864&
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/map/GlMap.vue?vue&type=template&id=54621512&
       var render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
@@ -2637,7 +2637,7 @@ module.exports = /******/ (function(modules) {
         }
       ];
 
-      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=b8a4f864&
+      // CONCATENATED MODULE: ./src/components/map/GlMap.vue?vue&type=template&id=54621512&
 
       // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom.iterable.js
       var web_dom_iterable = __webpack_require__("ac6a");
@@ -3017,8 +3017,12 @@ module.exports = /******/ (function(modules) {
           type: Number,
           default: 0
         },
-        initialBounds: {
+        bounds: {
           type: [Object, Array],
+          default: undefined
+        },
+        fitBoundsOptions: {
+          type: Object,
           default: undefined
         },
         renderWorldCopies: {
@@ -3189,8 +3193,12 @@ module.exports = /******/ (function(modules) {
               {
                 events: ["pitch"],
                 prop: "pitch",
-                getter: this.map.getPitch.bind(this.map) // TODO: make 'bounds' synced prop
-                // { events: ['moveend', 'zoomend', 'rotate', 'pitch'], prop: 'bounds', getter: this.map.getBounds.bind(this.map) }
+                getter: this.map.getPitch.bind(this.map)
+              },
+              {
+                events: ["moveend", "zoomend", "rotate", "pitch"],
+                prop: "bounds",
+                getter: this.map.getBounds.bind(this.map)
               }
             ];
             syncedProps.forEach(function(_ref) {
@@ -3348,10 +3356,6 @@ module.exports = /******/ (function(modules) {
           },
           version: function version() {
             return this.map ? this.map.version : null;
-          },
-          // TODO: make 'bounds' synced prop
-          bounds: function bounds() {
-            return this.map ? this.map.getBounds() : null;
           },
           isStyleLoaded: function isStyleLoaded() {
             return this.map ? this.map.isStyleLoaded() : false;
@@ -3940,8 +3944,8 @@ module.exports = /******/ (function(modules) {
 
       Marker_component.options.__file = "Marker.vue";
       /* harmony default export */ var Marker = Marker_component.exports;
-      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=6e79a273&
-      var Popupvue_type_template_id_6e79a273_render = function() {
+      // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"47f5d000-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=template&id=bdbffbcc&
+      var Popupvue_type_template_id_bdbffbcc_render = function() {
         var _vm = this;
         var _h = _vm.$createElement;
         var _c = _vm._self._c || _h;
@@ -3952,9 +3956,9 @@ module.exports = /******/ (function(modules) {
           2
         );
       };
-      var Popupvue_type_template_id_6e79a273_staticRenderFns = [];
+      var Popupvue_type_template_id_bdbffbcc_staticRenderFns = [];
 
-      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=6e79a273&
+      // CONCATENATED MODULE: ./src/components/UI/Popup.vue?vue&type=template&id=bdbffbcc&
 
       // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/UI/Popup.vue?vue&type=script&lang=js&
 
@@ -4078,7 +4082,7 @@ module.exports = /******/ (function(modules) {
             },
             set: function set(value) {
               if (this.map && this.popup) {
-                if (value) {
+                if (!value) {
                   this.popup.remove();
                 } else {
                   this.popup.addTo(this.map);
@@ -4175,8 +4179,8 @@ module.exports = /******/ (function(modules) {
 
       var Popup_component = normalizeComponent(
         UI_Popupvue_type_script_lang_js_,
-        Popupvue_type_template_id_6e79a273_render,
-        Popupvue_type_template_id_6e79a273_staticRenderFns,
+        Popupvue_type_template_id_bdbffbcc_render,
+        Popupvue_type_template_id_bdbffbcc_staticRenderFns,
         false,
         null,
         null,
@@ -4350,7 +4354,7 @@ module.exports = /******/ (function(modules) {
           }
         },
         beforeDestroy: function beforeDestroy() {
-          if (this.map && this.map.loaded()) {
+          if (this.map) {
             try {
               this.map.removeLayer(this.layerId);
             } catch (err) {
